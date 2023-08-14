@@ -1,0 +1,52 @@
+﻿@using ControleContatos.Enums
+@model UsuarioModel
+
+@{
+    ViewData["Title"] = "Adicionar usuário";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Novo usuário</h1>
+
+</div>
+
+<form asp-controller="Usuario" asp-action="Create" method="post">
+    
+
+    <div class="mb-3">
+        <label for="name">Nome</label>
+        <input type="text" asp-for="Name" class="form-control" placeholder="Nome completo">
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+
+    <div class="mb-3">
+        <label for="email">E-mail</label>
+        <input type="text" asp-for="Email" class="form-control">
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+
+    <div class="mb-3">
+        <label for="celphone">Login</label>
+        <input type="text" asp-for="Login" class="form-control" >
+        @Html.ValidationMessageFor(m => m.Login)
+    </div>
+    
+    <div class="mb-3">
+        <label for="celphone">Senha</label>
+        <input type="password" asp-for="Password" class="form-control" >
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    
+    <div class="mb-3">
+        <label for="celphone">Perfil</label>
+        <select asp-for="Profile" class="form-control">
+            <option value="0">Selecione</option>
+            <option value="@ProfileEnum.Admin">Administrador</option>
+            <option value="@ProfileEnum.User">Usuário</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <a class="btn btn-secondary" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
+</form>
