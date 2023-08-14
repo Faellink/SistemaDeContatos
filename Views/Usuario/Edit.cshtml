@@ -2,18 +2,18 @@
 @model UsuarioModel
 
 @{
-    ViewData["Title"] = "Adicionar usuário";
+    ViewData["Title"] = "Editar usuário";
 }
 
 <div class="text-center">
 
-    <h1 class="display-4">Novo usuário</h1>
+    <h1 class="display-4">Editar usuário</h1>
 
 </div>
 
-<form asp-controller="Usuario" asp-action="Create" method="post">
-    
+<form asp-controller="Usuario" asp-action="Edit" method="post">
 
+    <input type="hidden" asp-for="Id"/>
     <div class="mb-3">
         <label for="name">Nome</label>
         <input type="text" asp-for="Name" class="form-control" placeholder="Nome completo">
@@ -27,27 +27,21 @@
     </div>
 
     <div class="mb-3">
-        <label for="login">Login</label>
-        <input type="text" asp-for="Login" class="form-control" >
+        <label for="celphone">Login</label>
+        <input type="text" asp-for="Login" class="form-control">
         @Html.ValidationMessageFor(m => m.Login)
     </div>
-    
+
     <div class="mb-3">
-        <label for="password">Senha</label>
-        <input type="password" asp-for="Password" class="form-control" >
-        @Html.ValidationMessageFor(m => m.Password)
-    </div>
-    
-    <div class="mb-3">
-        <label for="profile">Perfil</label>
+        <label for="celphone">Perfil</label>
         <select asp-for="Profile" class="form-control">
             <option value="">Selecione</option>
             <option value="@ProfileEnum.Admin">Administrador</option>
             <option value="@ProfileEnum.User">Usuário</option>
-            @Html.ValidationMessageFor(m => m.Login)
         </select>
+        @Html.ValidationMessageFor(m => m.Profile)
     </div>
 
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <button type="submit" class="btn btn-primary btn-block">Editar</button>
     <a class="btn btn-secondary" asp-controller="Usuario" asp-action="Index" role="button">Voltar</a>
 </form>

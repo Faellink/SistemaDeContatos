@@ -31,7 +31,6 @@ namespace ControleContatos.Repository
             usuarioDb.Name = usuario.Name;
             usuarioDb.Login = usuario.Login;
             usuarioDb.Email = usuario.Email;
-            usuarioDb.Password = usuario.Password;
             usuarioDb.Profile = usuario.Profile;
             usuarioDb.LastUpdated = DateTime.Now;
 
@@ -57,6 +56,11 @@ namespace ControleContatos.Repository
         public UsuarioModel Delete(UsuarioModel contato)
         {
             throw new NotImplementedException();
+        }
+
+        public UsuarioModel GetLogin(string login)
+        {
+            return _databaseContext.Usuarios.FirstOrDefault(contato => contato.Login.ToUpper() == login.ToUpper());
         }
 
         public List<UsuarioModel> GetAll()
